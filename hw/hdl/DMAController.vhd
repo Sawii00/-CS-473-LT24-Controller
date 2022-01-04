@@ -16,8 +16,9 @@ ENTITY DMAController IS
 		Flags : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 		ImageAddress : IN STD_LOGIC_VECTOR(31 downto 0);
 		ImageLength : IN STD_LOGIC_VECTOR(31 downto 0);
+
+		-- Active low signal to reset Flags(0) lcd_enable of the register file
 		reset_flag_lcdenable : OUT STD_LOGIC;
-		-- Possibly reset?
 
 		-- Avalon Master
 		address : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -25,7 +26,6 @@ ENTITY DMAController IS
 		readdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 		readdatavalid : IN STD_LOGIC;
 		waitRequest : IN STD_LOGIC;
-		-- Size of burstcount???
 		burstcount : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
 
 
@@ -43,16 +43,15 @@ ENTITY DMAController IS
 END DMAController;
 
 ARCHITECTURE dma_control_arch OF DMAController IS
-	--signals
-	signal CurrentAddr : unsigned (31 downto 0);
-	signal CurrentLen : unsigned (31 downto 0);
-	signal current_burst : unsigned (15 downto 0);
+	signal CurrentAddr : unsigned (31 downto 0); -- Contains the current address at which we are currently reading
+	signal CurrentLen : unsigned (31 downto 0); -- Contains the current number of bytes left to read from memory
+	signal current_burst : unsigned (15 downto 0); -- Contains the current burst counter to keep track of the progress
 	constant N : std_logic_vector(4 downto 0) := "10000";
 	signal state : DMAState;
 BEGIN
 
-	data <= readdata;
-	wrreq <= readdatavalid;
+	data <= readdata; -- readdata is directly assigned to data to insert values into the FIFO
+	wrreq <= readdatavalid; -- wrreq can be set to readdatavalid since we are inserting every pixel received
 	
 	-- Avalon Master Read.
 	PROCESS (clk, nReset, almost_full, waitRequest, readdatavalid, readdata, Flags, ImageAddress, ImageLength)
@@ -74,6 +73,7 @@ BEGIN
 							state <= WaitFifo;
 						end if;
 					when WaitFifo =>
+						-- We check that there is enough space to fit an entire burst of 16 words
 						if almost_full = '0' then
 							state <= Request;
 							read <= '1';
@@ -81,27 +81,32 @@ BEGIN
 							address <= std_logic_vector(CurrentAddr);
 						end if;
 					when Request =>
+						-- We initialize the counter of the current number of words read within the burst
 						current_burst <= x"0001";
+						-- When the bus is granted we start waiting for data
 						if waitRequest = '0' then
 							state <= WaitData;
 							read <= '0';
 						end if;
 					when WaitData =>
 						if readdatavalid = '1' then
+							-- We read words of 2 bytes, so we must increment the address (byte-addressed) by 2
 							CurrentAddr <= CurrentAddr + 2;
 							CurrentLen <= CurrentLen - 2;
 							current_burst <= current_burst + 1;
-							-- Careful underflow
 						end if;
+						-- When we finish an entire burst we check if the image is done in CheckData
 						if current_burst = unsigned(N) then
 							state <= CheckData;
 						end if;
 					when CheckData =>
+						-- Check if image is finished
 						if CurrentLen = 0 then
-							--image finished
 							state <= ResetFlag;
+							-- Resetting the lcdenable flag 
 							reset_flag_lcdenable <= '0';
 						else 
+							-- We still have more bursts to go, so we transition back to WaitFifo
 							state <= WaitFifo;
 						end if;
 					when ResetFlag =>
@@ -116,31 +121,3 @@ BEGIN
 	--cnt_len <= CurrentLen;
 
 END dma_control_arch;
-
-					--when WaitData =>
-						--if readdatavalid = '1' then
-							--CurrentAddr <= CurrentAddr + 2;
-							--CurrentLen <= CurrentLen - 2;
-							--current_burst <= current_burst + 1;
-							---- Careful underflow
-							--state <= RecvData;
-						--end if;
-					--when RecvData =>
-						--if CurrentLen = 0 then
-							----image finished
-							--state <= Idle;
-						--elsif current_burst = unsigned(N) then
-							----burst finished
-							--state <= WaitFifo;
-						--else 
-							--if readdatavalid = '1' then
-								--CurrentAddr <= CurrentAddr + 2;
-								--if CurrentLen = 2 then
-									--reset_flag_lcdenable <= '0';
-								--end if;
-								--CurrentLen <= CurrentLen - 2;
-								--current_burst <= current_burst + 1;
-							--else
-								--state <= WaitData;
-							--end if;
-						--end if;

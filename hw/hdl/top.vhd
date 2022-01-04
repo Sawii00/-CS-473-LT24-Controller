@@ -33,21 +33,10 @@ ENTITY TOP is
         CSX : OUT STD_LOGIC;
         RESX : OUT STD_LOGIC
 
-		-- DEBUG
-		--lcd_state_out : OUT LCDState;
-		--dma_state_out : OUT DMAState;
-		--flags : OUT std_logic_vector(15 downto 0);
-
-		--fifo_data_in : OUT std_logic_vector(15 downto 0);
-		--fifo_data_out : OUT std_logic_vector(15 downto 0);
-		--fifo_write_req : OUT std_logic;
-		--fifo_read_req : OUT std_logic
     );
 END TOP;
 
 architecture A OF TOP is
-
-
     component LCDController PORT (
 		-- Global signals
 		clk : IN STD_LOGIC;
@@ -75,7 +64,6 @@ architecture A OF TOP is
 		CSX : OUT STD_LOGIC;
 		RESX : OUT STD_LOGIC
 
-		--lcd_state_out : OUT LCDState
 
     );
     END component;
@@ -91,7 +79,6 @@ architecture A OF TOP is
 		ImageAddress : IN STD_LOGIC_VECTOR(31 downto 0);
 		ImageLength : IN STD_LOGIC_VECTOR(31 downto 0);
 		reset_flag_lcdenable : OUT STD_LOGIC;
-		-- Possibly reset?
 
 		-- Avalon Master
 		address : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -99,15 +86,12 @@ architecture A OF TOP is
 		readdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
 		readdatavalid : IN STD_LOGIC;
 		waitRequest : IN STD_LOGIC;
-		-- Size of burstcount???
 		burstcount : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
 
 		-- Output signals to FIFO
 		data : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
 		wrreq : OUT STD_LOGIC;
 		almost_full : IN STD_LOGIC
-
-		--dma_state_out : OUT DMAState
 		);
 
 	END component;
@@ -150,6 +134,7 @@ architecture A OF TOP is
 
 	);
     END component;
+
 	signal ImageLength_temp : STD_LOGIC_VECTOR(31 DOWNTO 0);
 	signal Flags_temp : STD_LOGIC_VECTOR(15 DOWNTO 0);
 	signal ImageAddress_temp : STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -167,7 +152,8 @@ architecture A OF TOP is
 	signal empty_tmp : std_logic;
 	signal q_tmp : std_logic_vector(15 downto 0);
 
-	signal resetFifo: std_logic;
+	signal resetFifo: std_logic; -- FIFO has active high asynchronous flush
+
 
 
 	BEGIN
@@ -222,7 +208,6 @@ architecture A OF TOP is
 		data => data_tmp, --dma -> fifo
 		wrreq => wrreq_tmp, --dma->fifo
 		almost_full => almost_full_tmp
-		--dma_state_out => dma_state_out
 	);
 
 	lcd_instance : component LCDController
@@ -244,14 +229,8 @@ architecture A OF TOP is
 		WRX => WRX, --lcd ->top
 		CSX => CSX, --lcd -> top
 		RESX => RESX
-		--lcd_state_out => lcd_state_out
 	);
 
-	--flags <= Flags_temp;
-	--fifo_data_in <= data_tmp;
-	--fifo_data_out <= q_tmp;
-	--fifo_read_req <= rdreq_tmp;
-	--fifo_write_req <= wrreq_tmp;
 
 
 end architecture A;

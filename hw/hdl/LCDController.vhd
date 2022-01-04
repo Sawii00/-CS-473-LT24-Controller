@@ -3,7 +3,6 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.register_file_pkg.all;
 
--- we need tri-state for flag registers
 ENTITY LCDController IS
 
 	PORT (
@@ -34,7 +33,6 @@ ENTITY LCDController IS
         RESX : OUT STD_LOGIC
 
         -- Debug
-
         --lcd_state_out : OUT LCDState
 
         );
@@ -42,28 +40,23 @@ ENTITY LCDController IS
     END LCDController;
 
     ARCHITECTURE lcd_controller_arch OF LCDController IS
-        --signals
 
-        --NOTE: we might wanna duplicate the command value and n param registers to avoid the possibility that the user changes them mid execution
-        signal reset_counter : unsigned(31 downto 0);
-        signal k : unsigned(7 downto 0); 
-
-        signal cc4 : unsigned(2 downto 0);
-
-        signal BytesLeft : unsigned(31 downto 0);
+        signal reset_counter : unsigned(31 downto 0); -- Used to keep track of time within the reset procedure
+        signal k : unsigned(7 downto 0); -- Keeps track of the currently read parameter to be sent 
+        signal cc4 : unsigned(2 downto 0); -- Used to enforce a delay before transitioning to next state
+        signal BytesLeft : unsigned(31 downto 0); -- Number of bytes left to send to the display
         
         signal state : LCDState;
-        signal last_val : std_logic;
-
     BEGIN
 
-    CSX <= '0';
+    CSX <= '0'; -- We keep CSX to LOW to select the LT24
 
         -- LCD FSM.
     PROCESS (clk, nReset, state, Flags, CommandReg, NParamReg, Params, q, empty, ImageLength)
         variable bytes_left : unsigned(31 downto 0);
 
 	BEGIN
+        -- Flags(2) is the asynchronous reset flag that can be set via software by the NIOS
         IF Flags(2) = '1' and state /= Reset then 
             state <= Reset;
 		elsIF nReset = '0' THEN
@@ -72,7 +65,6 @@ ENTITY LCDController IS
             D <= x"0000";
             D_CX <= '0';
             WRX <= '0';
-            --CSX <= '0';
             RESX <= '0';
             k <= x"00";
             cc4 <= "000";
@@ -81,7 +73,6 @@ ENTITY LCDController IS
 		ELSIF rising_edge(clk) THEN
             case state is 
                 when Idle =>
-                    --CSX <= '1';
                     WRX <= '0';
                     reset_flag_reset <= '1';
                     reset_flag_cmd <= '1';
@@ -89,7 +80,7 @@ ENTITY LCDController IS
                         -- send_command is HIGH, we start sending the command
                         state <= ReadCmd;
                     elsif Flags(0) = '1' then
-                        -- enable is HIGH, we start displaying
+                        -- lcd_enable is HIGH, we start displaying
                         state <= IdleImageDisplay;
                     else
                         state <= Idle;
@@ -97,23 +88,26 @@ ENTITY LCDController IS
                 when Reset =>
                     WRX <= '0';
                     if (reset_counter) < 50000 then
+                        -- Wait for 1ms (50 MHz clock) with RESX HIGH
                         RESX <= '1';
                         reset_counter <= reset_counter + 1;
                         reset_flag_reset <= '1';
                         state <= Reset;
                     elsif  (reset_counter)< 550000 then
+                        -- Wait for 10ms with RESX LOW
                         RESX <= '0';
                         reset_counter <= reset_counter + 1;
                         reset_flag_reset <= '1';
                         state <= Reset;
                     elsif (reset_counter) < 6550000 then
+                        -- Wait for 120ms with RESX HIGH
                         RESX <= '1';
                         reset_counter <= reset_counter + 1;
                         reset_flag_reset <= '1';
                         state <= Reset;
                     elsif (reset_counter) = 6550000 then
                         RESX <= '1';
-                        reset_flag_reset <= '0';
+                        reset_flag_reset <= '0'; -- Reset the reset flag (Flags(2))
                         state <= Reset;
                         reset_counter <= reset_counter + 1;
                     else
@@ -121,11 +115,8 @@ ENTITY LCDController IS
                         reset_flag_reset <= '0';
                         reset_counter <= x"00000000";
                         state <= Idle;
-                        --flush the FIFO: sclr <= '1';
-                        --signal to dma to reset the state
                     end if;
                 when ReadCmd =>
-                    --CSX <= '0';
                     D_CX <= '0';
                     WRX <= '0';
                     D <= CommandReg;
@@ -139,10 +130,11 @@ ENTITY LCDController IS
                     end if;
                 when Send =>
                     WRX <= '1';
+                    -- We check if we have any parameter left to send
                     if k = unsigned(NParamReg) then
                         state <= ResetRegs;
                         cc4 <= "000";
-                        reset_flag_cmd <= '0'; -- WE must clear it here or it comes 1 cycle too late
+                        reset_flag_cmd <= '0';  -- We should probably move this to the ResetRegs state 
                     elsif (cc4) < 4 then
                         cc4 <= cc4 + 1;
                         state <= Send;
@@ -154,17 +146,17 @@ ENTITY LCDController IS
                     D_CX <= '1';
                     WRX <= '0';
                     if (cc4) < 4 then
-                        D <= Params(to_integer(k));
+                        D <= Params(to_integer(k)); -- Extract the parameter to be sent
                         cc4 <= cc4 + 1;
                         state <= FetchParam;
                     else
                         state <= Send;
-                        k <= k + 1;
+                        k <= k + 1; -- Increment the param index
                         cc4 <= "000";
                     end if;
                 when ResetRegs =>
-                --possibly make reset_flag_cmd = 1 here 
-                    --WRX <= '0';
+                    -- Transition state to keep WRX to HIGH for the usual delay when sending the last parameter
+                    -- Without this, we would transition back to Idle and put WRX to 0 without respecting the time constraint
                     if cc4 < 4 then
                         cc4 <= cc4 + 1;
                         state <= ResetRegs;
@@ -172,18 +164,19 @@ ENTITY LCDController IS
                         cc4 <= "000";
                         state <= Idle;
                     end if;
-                    -- I do not reset WRX because I would need to add the usual delay
                 when IdleImageDisplay =>
                     WRX <= '0';
-                    BytesLeft <= unsigned(ImageLength);
+                    BytesLeft <= unsigned(ImageLength); -- Bytes to be sent to the display
                     if Flags(0) = '0' then
                         state <= Idle;
                     elsif empty = '0' then
+                        -- There are pixels ready to be sent
                         state <= PutWriteCmd;
                     else
                         state <= IdleImageDisplay;
                     end if;
                 when PutWriteCmd =>
+                    -- We send the command 0x2C as a preamble to image data
                     WRX <= '0';
                     D_CX <= '0';
                     D <= x"002c";
@@ -196,23 +189,26 @@ ENTITY LCDController IS
                     end if;
                 when WritePixel =>
                     WRX <= '1';
+                    -- Check if we have sent the whole image
                     if BytesLeft = 0 then
                         rdreq <= '0';
                         if (cc4) < 4 then
                             state <= WritePixel;
                             cc4 <= cc4 + 1;
                         else
+                            -- Transition back to IdleImageDisplay after usual delay
                             state <= IdleImageDisplay;
                             cc4 <= "000";
                         end if;
                     elsif empty = '0' then
+                        -- We have pixels ready to be sent
                         if (cc4) < 4 then
                             cc4 <= cc4 + 1;
                             state <= WritePixel;
                         else
                             state <= PutPixel;
                             cc4 <= "000";
-                            BytesLeft <= BytesLeft - 2; --potential problem here... we are decrementing even when we first send the command
+                            BytesLeft <= BytesLeft - 2; 
                         end if;
                     else
                         state <= WritePixel;
@@ -226,16 +222,19 @@ ENTITY LCDController IS
                         state <= PutPixel;
                         rdreq <= '0';
                     elsif (cc4) = 2 then
+                        -- At the third cycle we request a word from the FIFO
                         cc4 <= cc4 + 1;
                         state <= PutPixel;
                         rdreq <= '1';
                     elsif (cc4) = 3 then
+                        -- In this cycle the FIFO has read the request and provides the value onto the bus
                         cc4 <= cc4 + 1;
                         state <= PutPixel;
                         rdreq <= '0';
                     else
+                        -- In this final cycle we have the value ready on the q bus
                         cc4 <= "000";
-                        D <= q; -- here or in the prev cycle???
+                        D <= q; 
                         state <= WritePixel;
                         rdreq <= '0';
                     end if;

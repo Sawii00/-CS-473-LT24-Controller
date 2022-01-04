@@ -23,6 +23,7 @@ ENTITY RegisterFile IS
 		NParamReg : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
 		Params : OUT RF(0 to 63);
 
+		-- Active-low signals used to reset the flags from the Controllers
 		reset_flag_reset : IN STD_LOGIC;
 		reset_flag_cmd: IN STD_LOGIC;
 		reset_flag_lcdenable: IN STD_LOGIC
@@ -31,13 +32,12 @@ ENTITY RegisterFile IS
 END RegisterFile;
 
 ARCHITECTURE register_file_arch OF RegisterFile IS
-	--signals
+	-- Register content stored as array of 16-bit words
 	signal registers : RF(0 to 70);
 
 BEGIN
 	-- Avalon slave write to registers.
 	PROCESS (clk, nReset)
-
 	variable temp_regs : RF(0 to 70);
 	BEGIN
 		IF nReset = '0' THEN
@@ -46,20 +46,22 @@ BEGIN
 			temp_regs := registers;
 			IF write = '1' THEN
 				CASE to_integer(unsigned(address)) IS
-					--WHEN 0 to 3 => registers(to_integer(unsigned(address))) <= writedata;
-					--WHEN 4 => registers(4) <= writedata(15 downto 3) & (writedata(2) and reset_flag_reset) & (writedata(1) and reset_flag_cmd) & (writedata(0) and reset_flag_lcdenable);
 					WHEN 0 to 70 => temp_regs(to_integer(unsigned(address))) := writedata;
 					WHEN OTHERS => NULL;
 				END CASE;
 			END IF;
 
+			-- We handle the incoming reset flags
 			if reset_flag_cmd = '0' then
+				-- Resetting the send_command flag
 				temp_regs(4)(1) := '0';
 			END IF;
 			if reset_flag_reset= '0' then
+				-- Resetting the reset flag
 				temp_regs(4)(2) := '0';
 			END IF;
 			if reset_flag_lcdenable = '0' then
+				-- Resetting the lcdenable flag
 				temp_regs(4)(0) := '0';
 			END IF;
 			registers <= temp_regs;
@@ -80,30 +82,12 @@ BEGIN
 		END IF;
 	END PROCESS;
 
-	-- Write Register Content to Output
-	--PROCESS (clk, nReset)
-	--BEGIN
-		--IF rising_edge(clk) THEN
-			-- TODO: check this concatenation
-			--ImageAddress <= registers(0) & registers(1);
-			--ImageLength <= registers(2) & registers(3);
-			--Flags <= registers(4);
-			--CommandReg <= registers(5); 
-			--NParamReg <= registers(6);
-			--Params <= registers(7 to 70); 
-	--END IF;
-	--END PROCESS;
-
-	--registers(4)(1) <= registers(4)(1) and reset_flag_cmd;
-	--registers(4)(2) <= registers(4)(2) and reset_flag_reset; 
-	--registers(4)(0) <= registers(4)(0) and reset_flag_lcdenable; 
-
-	ImageAddress <= registers(1) & registers(0);
-	ImageLength <= registers(3) & registers(2);
+	-- Providing output values to the other modules
+	ImageAddress <= registers(1) & registers(0); -- Reassembled since 32-bit
+	ImageLength <= registers(3) & registers(2); -- Reassembled since 32-bit
 	Flags <= registers(4);
 	CommandReg <= registers(5); 
 	NParamReg <= registers(6);
 	Params <= registers(7 to 70); 
-	
 
 END ;

@@ -1,0 +1,133 @@
+Flow report for ES_mini_project_TRDB_D5M_LT24
+Tue Jan  4 20:47:06 2022
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Flow Summary                                                                  ;
++---------------------------------+---------------------------------------------+
+; Flow Status                     ; Successful - Tue Jan  4 20:45:39 2022       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                   ; ES_mini_project_TRDB_D5M_LT24               ;
+; Top-level Entity Name           ; DE0_Nano_SoC_TRDB_D5M_LT24_top_level        ;
+; Family                          ; Cyclone V                                   ;
+; Device                          ; 5CSEMA4U23C6                                ;
+; Timing Models                   ; Final                                       ;
+; Logic utilization (in ALMs)     ; 3,017 / 15,880 ( 19 % )                     ;
+; Total registers                 ; 4533                                        ;
+; Total pins                      ; 153 / 314 ( 49 % )                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 1,123,456 / 2,764,800 ( 41 % )              ;
+; Total DSP Blocks                ; 3 / 84 ( 4 % )                              ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0 / 5 ( 0 % )                               ;
+; Total DLLs                      ; 1 / 4 ( 25 % )                              ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------+
+; Flow Settings                                     ;
++-------------------+-------------------------------+
+; Option            ; Setting                       ;
++-------------------+-------------------------------+
+; Start date & time ; 01/04/2022 20:35:24           ;
+; Main task         ; Compilation                   ;
+; Revision Name     ; ES_mini_project_TRDB_D5M_LT24 ;
++-------------------+-------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                                       ;
++---------------------------------------+----------------------------------------+-------------------------------+--------------------------------------+----------------+
+; Assignment Name                       ; Value                                  ; Default Value                 ; Entity Name                          ; Section Id     ;
++---------------------------------------+----------------------------------------+-------------------------------+--------------------------------------+----------------+
+; COMPILER_SIGNATURE_ID                 ; 158330989090381.164132492121941        ; --                            ; --                                   ; --             ;
+; ECO_REGENERATE_REPORT                 ; On                                     ; Off                           ; --                                   ; --             ;
+; EDA_OUTPUT_DATA_FORMAT                ; None                                   ; --                            ; --                                   ; eda_simulation ;
+; MAX_CORE_JUNCTION_TEMP                ; 85                                     ; --                            ; --                                   ; --             ;
+; MIN_CORE_JUNCTION_TEMP                ; 0                                      ; --                            ; --                                   ; --             ;
+; MISC_FILE                             ; ../hdl/fifo_inst.vhd                   ; --                            ; --                                   ; --             ;
+; MISC_FILE                             ; ../hdl/fifo.cmp                        ; --                            ; --                                   ; --             ;
+; PARTITION_COLOR                       ; -- (Not supported for targeted family) ; --                            ; DE0_Nano_SoC_TRDB_D5M_LT24_top_level ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL   ; -- (Not supported for targeted family) ; --                            ; DE0_Nano_SoC_TRDB_D5M_LT24_top_level ; Top            ;
+; PARTITION_NETLIST_TYPE                ; -- (Not supported for targeted family) ; --                            ; DE0_Nano_SoC_TRDB_D5M_LT24_top_level ; Top            ;
+; POWER_BOARD_THERMAL_MODEL             ; None (CONSERVATIVE)                    ; --                            ; --                                   ; --             ;
+; POWER_PRESET_COOLING_SOLUTION         ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --                            ; --                                   ; --             ;
+; PROJECT_OUTPUT_DIRECTORY              ; output_files                           ; --                            ; --                                   ; --             ;
+; TOP_LEVEL_ENTITY                      ; DE0_Nano_SoC_TRDB_D5M_LT24_top_level   ; ES_mini_project_TRDB_D5M_LT24 ; --                                   ; --             ;
+; USE_DLL_FREQUENCY_FOR_DQS_DELAY_CHAIN ; On                                     ; Off                           ; --                                   ; --             ;
++---------------------------------------+----------------------------------------+-------------------------------+--------------------------------------+----------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:04:21     ; 1.0                     ; 1424 MB             ; 00:07:58                           ;
+; Fitter               ; 00:05:23     ; 1.1                     ; 2750 MB             ; 00:09:45                           ;
+; Assembler            ; 00:00:15     ; 1.0                     ; 1038 MB             ; 00:00:15                           ;
+; Timing Analyzer      ; 00:01:24     ; 1.3                     ; 1668 MB             ; 00:01:50                           ;
+; Total                ; 00:11:23     ; --                      ; --                  ; 00:19:48                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                          ;
++----------------------+------------------+---------------+---------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name       ; OS Version    ; Processor type ;
++----------------------+------------------+---------------+---------------+----------------+
+; Analysis & Synthesis ; sawiipc          ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; Fitter               ; sawiipc          ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; Assembler            ; sawiipc          ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; Timing Analyzer      ; sawiipc          ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
++----------------------+------------------+---------------+---------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off ES_mini_project_TRDB_D5M_LT24 -c ES_mini_project_TRDB_D5M_LT24
+quartus_fit --read_settings_files=off --write_settings_files=off ES_mini_project_TRDB_D5M_LT24 -c ES_mini_project_TRDB_D5M_LT24
+quartus_asm --read_settings_files=off --write_settings_files=off ES_mini_project_TRDB_D5M_LT24 -c ES_mini_project_TRDB_D5M_LT24
+quartus_sta ES_mini_project_TRDB_D5M_LT24 -c ES_mini_project_TRDB_D5M_LT24
+
+
+

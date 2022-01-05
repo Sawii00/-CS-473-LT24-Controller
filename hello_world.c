@@ -128,14 +128,18 @@ void configure_image(uint32_t image_address, uint32_t image_size)
 void init_image(uint32_t image_address, uint32_t rows, uint32_t cols)
 {
 	uint32_t i = 0;
-	uint32_t j = 0;
+	uint16_t color = 0xF800;
 
 	while(i < rows * sizeof(uint16_t))
 	{
+		uint32_t j = 0;
+		if(i % 100 == 0)
+			color = color == 0xF800 ? 0x001F : 0xF800;
+
 		while(j < cols * sizeof(uint16_t))
 		{
-			IOWR_16DIRECT(image_address, i * rows + j, 0xF800);
-			if(IORD_16DIRECT(image_address, i * rows + j) != 0xF800)
+			IOWR_16DIRECT(image_address, i * cols + j, color);
+			if(IORD_16DIRECT(image_address, i * cols + j) != color)
 			{
 				printf("Error writing to extender\n");
 			}
@@ -156,7 +160,7 @@ int main()
 	init_lcd();
 	printf("LCD Initialized\n");
 
-	uint32_t image_size = 320 * 240 * sizeof(uint16_t);//320 * 240 * sizeof(uint16_t);
+	uint32_t image_size = 320 * 240 * sizeof(uint16_t);
 	uint32_t image_address = HPS_0_BRIDGES_BASE;
 
 	printf("Setting image address and size\n");

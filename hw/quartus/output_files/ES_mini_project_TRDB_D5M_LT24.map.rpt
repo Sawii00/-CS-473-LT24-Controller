@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ES_mini_project_TRDB_D5M_LT24
-Tue Jan  4 20:39:50 2022
+Wed Jan  5 11:14:44 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -335,7 +335,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Jan  4 20:39:49 2022       ;
+; Analysis & Synthesis Status     ; Successful - Wed Jan  5 11:14:44 2022       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; ES_mini_project_TRDB_D5M_LT24               ;
 ; Top-level Entity Name           ; DE0_Nano_SoC_TRDB_D5M_LT24_top_level        ;
@@ -8602,7 +8602,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------------------------------+--------------+
 ; Partition Name                        ; Elapsed Time ;
 +---------------------------------------+--------------+
-; Top                                   ; 00:00:26     ;
+; Top                                   ; 00:00:27     ;
 ; soc_system_hps_0_hps_io_border:border ; 00:00:02     ;
 ; pzdyqx:nabboc                         ; 00:00:01     ;
 +---------------------------------------+--------------+
@@ -8614,33 +8614,33 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Tue Jan  4 20:35:20 2022
+    Info: Processing started: Wed Jan  5 11:09:55 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ES_mini_project_TRDB_D5M_LT24 -c ES_mini_project_TRDB_D5M_LT24
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12248): Elaborating Platform Designer system entity "soc_system.qsys"
-Info (12250): 2022.01.04.20:35:56 Progress: Loading quartus/soc_system.qsys
-Info (12250): 2022.01.04.20:35:57 Progress: Reading input file
-Info (12250): 2022.01.04.20:35:57 Progress: Adding address_span_extender_0 [altera_address_span_extender 18.1]
-Info (12250): 2022.01.04.20:36:00 Progress: Parameterizing module address_span_extender_0
-Info (12250): 2022.01.04.20:36:00 Progress: Adding clk_0 [clock_source 18.1]
-Info (12250): 2022.01.04.20:36:00 Progress: Parameterizing module clk_0
-Info (12250): 2022.01.04.20:36:00 Progress: Adding hps_0 [altera_hps 18.1]
-Info (12250): 2022.01.04.20:36:04 Progress: Parameterizing module hps_0
-Info (12250): 2022.01.04.20:36:04 Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 18.1]
-Info (12250): 2022.01.04.20:36:04 Progress: Parameterizing module jtag_uart_0
-Info (12250): 2022.01.04.20:36:04 Progress: Adding lcd_0 [lcd 1.0]
-Info (12250): 2022.01.04.20:36:04 Progress: Parameterizing module lcd_0
-Info (12250): 2022.01.04.20:36:04 Progress: Adding nios2_gen2_0 [altera_nios2_gen2 18.1]
-Info (12250): 2022.01.04.20:36:04 Progress: Parameterizing module nios2_gen2_0
-Info (12250): 2022.01.04.20:36:04 Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 18.1]
-Info (12250): 2022.01.04.20:36:04 Progress: Parameterizing module onchip_memory2_0
-Info (12250): 2022.01.04.20:36:04 Progress: Adding pio_leds [altera_avalon_pio 18.1]
-Info (12250): 2022.01.04.20:36:04 Progress: Parameterizing module pio_leds
-Info (12250): 2022.01.04.20:36:04 Progress: Building connections
-Info (12250): 2022.01.04.20:36:04 Progress: Parameterizing connections
-Info (12250): 2022.01.04.20:36:04 Progress: Validating
-Info (12250): 2022.01.04.20:36:23 Progress: Done reading input file
+Info (12250): 2022.01.05.11:10:33 Progress: Loading quartus/soc_system.qsys
+Info (12250): 2022.01.05.11:10:34 Progress: Reading input file
+Info (12250): 2022.01.05.11:10:34 Progress: Adding address_span_extender_0 [altera_address_span_extender 18.1]
+Info (12250): 2022.01.05.11:10:38 Progress: Parameterizing module address_span_extender_0
+Info (12250): 2022.01.05.11:10:38 Progress: Adding clk_0 [clock_source 18.1]
+Info (12250): 2022.01.05.11:10:39 Progress: Parameterizing module clk_0
+Info (12250): 2022.01.05.11:10:39 Progress: Adding hps_0 [altera_hps 18.1]
+Info (12250): 2022.01.05.11:10:45 Progress: Parameterizing module hps_0
+Info (12250): 2022.01.05.11:10:45 Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 18.1]
+Info (12250): 2022.01.05.11:10:45 Progress: Parameterizing module jtag_uart_0
+Info (12250): 2022.01.05.11:10:45 Progress: Adding lcd_0 [lcd 1.0]
+Info (12250): 2022.01.05.11:10:45 Progress: Parameterizing module lcd_0
+Info (12250): 2022.01.05.11:10:45 Progress: Adding nios2_gen2_0 [altera_nios2_gen2 18.1]
+Info (12250): 2022.01.05.11:10:45 Progress: Parameterizing module nios2_gen2_0
+Info (12250): 2022.01.05.11:10:45 Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 18.1]
+Info (12250): 2022.01.05.11:10:45 Progress: Parameterizing module onchip_memory2_0
+Info (12250): 2022.01.05.11:10:45 Progress: Adding pio_leds [altera_avalon_pio 18.1]
+Info (12250): 2022.01.05.11:10:45 Progress: Parameterizing module pio_leds
+Info (12250): 2022.01.05.11:10:45 Progress: Building connections
+Info (12250): 2022.01.05.11:10:45 Progress: Parameterizing connections
+Info (12250): 2022.01.05.11:10:45 Progress: Validating
+Info (12250): 2022.01.05.11:11:09 Progress: Done reading input file
 Warning (12251): Soc_system.hps_0: Setting the slave port width of interface f2h_sdram0 to 32 results in bandwidth under-utilization.  Altera recommends you set the interface data width to 64-bit or greater.
 Info (12250): Soc_system.hps_0: HPS Main PLL counter settings: n = 0  m = 73
 Info (12250): Soc_system.hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
@@ -8659,17 +8659,17 @@ Warning (12251): Hps_0: "Configuration/HPS-to-FPGA user 0 clock frequency" (desi
 Warning (12251): Hps_0: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
 Info (12250): Hps_0: "soc_system" instantiated altera_hps "hps_0"
 Info (12250): Jtag_uart_0: Starting RTL generation for module 'soc_system_jtag_uart_0'
-Info (12250): Jtag_uart_0:   Generation command is [exec /root/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /root/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=soc_system_jtag_uart_0 --dir=/tmp/alt8996_6766381595980125086.dir/0003_jtag_uart_0_gen/ --quartus_dir=/root/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8996_6766381595980125086.dir/0003_jtag_uart_0_gen//soc_system_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Jtag_uart_0:   Generation command is [exec /root/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /root/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=soc_system_jtag_uart_0 --dir=/tmp/alt8997_2809627154235578291.dir/0003_jtag_uart_0_gen/ --quartus_dir=/root/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8997_2809627154235578291.dir/0003_jtag_uart_0_gen//soc_system_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
 Info (12250): Jtag_uart_0: Done RTL generation for module 'soc_system_jtag_uart_0'
 Info (12250): Jtag_uart_0: "soc_system" instantiated altera_avalon_jtag_uart "jtag_uart_0"
 Info (12250): Lcd_0: "soc_system" instantiated lcd "lcd_0"
 Info (12250): Nios2_gen2_0: "soc_system" instantiated altera_nios2_gen2 "nios2_gen2_0"
 Info (12250): Onchip_memory2_0: Starting RTL generation for module 'soc_system_onchip_memory2_0'
-Info (12250): Onchip_memory2_0:   Generation command is [exec /root/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /root/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=soc_system_onchip_memory2_0 --dir=/tmp/alt8996_6766381595980125086.dir/0005_onchip_memory2_0_gen/ --quartus_dir=/root/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8996_6766381595980125086.dir/0005_onchip_memory2_0_gen//soc_system_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Onchip_memory2_0:   Generation command is [exec /root/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /root/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=soc_system_onchip_memory2_0 --dir=/tmp/alt8997_2809627154235578291.dir/0005_onchip_memory2_0_gen/ --quartus_dir=/root/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8997_2809627154235578291.dir/0005_onchip_memory2_0_gen//soc_system_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
 Info (12250): Onchip_memory2_0: Done RTL generation for module 'soc_system_onchip_memory2_0'
 Info (12250): Onchip_memory2_0: "soc_system" instantiated altera_avalon_onchip_memory2 "onchip_memory2_0"
 Info (12250): Pio_leds: Starting RTL generation for module 'soc_system_pio_leds'
-Info (12250): Pio_leds:   Generation command is [exec /root/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /root/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=soc_system_pio_leds --dir=/tmp/alt8996_6766381595980125086.dir/0006_pio_leds_gen/ --quartus_dir=/root/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8996_6766381595980125086.dir/0006_pio_leds_gen//soc_system_pio_leds_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Pio_leds:   Generation command is [exec /root/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /root/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /root/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=soc_system_pio_leds --dir=/tmp/alt8997_2809627154235578291.dir/0006_pio_leds_gen/ --quartus_dir=/root/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8997_2809627154235578291.dir/0006_pio_leds_gen//soc_system_pio_leds_component_configuration.pl  --do_build_sim=0  ]
 Info (12250): Pio_leds: Done RTL generation for module 'soc_system_pio_leds'
 Info (12250): Pio_leds: "soc_system" instantiated altera_avalon_pio "pio_leds"
 Info (12250): Avalon_st_adapter: Inserting error_adapter: error_adapter_0
@@ -8686,31 +8686,31 @@ Info (12250): Rst_controller: "soc_system" instantiated altera_reset_controller 
 Info (12250): Fpga_interfaces: "hps_0" instantiated altera_interface_generator "fpga_interfaces"
 Info (12250): Hps_io: "hps_0" instantiated altera_hps_io "hps_io"
 Info (12250): Cpu: Starting RTL generation for module 'soc_system_nios2_gen2_0_cpu'
-Info (12250): Cpu:   Generation command is [exec /root/intelFPGA_lite/18.1/quartus/linux64//eperlcmd -I /root/intelFPGA_lite/18.1/quartus/linux64//perl/lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- /root/intelFPGA_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=soc_system_nios2_gen2_0_cpu --dir=/tmp/alt8996_6766381595980125086.dir/0010_cpu_gen/ --quartus_bindir=/root/intelFPGA_lite/18.1/quartus/linux64/ --verilog --config=/tmp/alt8996_6766381595980125086.dir/0010_cpu_gen//soc_system_nios2_gen2_0_cpu_processor_configuration.pl  --do_build_sim=0  ]
-Info (12250): Cpu: # 2022.01.04 20:37:01 (*) Starting Nios II generation
-Info (12250): Cpu: # 2022.01.04 20:37:01 (*)   Checking for plaintext license.
-Info (12250): Cpu: # 2022.01.04 20:37:02 (*)   Couldn't query license setup in Quartus directory /root/intelFPGA_lite/18.1/quartus/linux64/
-Info (12250): Cpu: # 2022.01.04 20:37:02 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-Info (12250): Cpu: # 2022.01.04 20:37:02 (*)   LM_LICENSE_FILE environment variable is empty
-Info (12250): Cpu: # 2022.01.04 20:37:02 (*)   Plaintext license not found.
-Info (12250): Cpu: # 2022.01.04 20:37:02 (*)   Checking for encrypted license (non-evaluation).
-Info (12250): Cpu: # 2022.01.04 20:37:03 (*)   Couldn't query license setup in Quartus directory /root/intelFPGA_lite/18.1/quartus/linux64/
-Info (12250): Cpu: # 2022.01.04 20:37:03 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-Info (12250): Cpu: # 2022.01.04 20:37:03 (*)   LM_LICENSE_FILE environment variable is empty
-Info (12250): Cpu: # 2022.01.04 20:37:03 (*)   Encrypted license not found.  Defaulting to OCP evaluation license (produces a time-limited SOF)
-Info (12250): Cpu: # 2022.01.04 20:37:03 (*)   Elaborating CPU configuration settings
-Info (12250): Cpu: # 2022.01.04 20:37:03 (*)   Creating all objects for CPU
-Info (12250): Cpu: # 2022.01.04 20:37:03 (*)     Testbench
-Info (12250): Cpu: # 2022.01.04 20:37:03 (*)     Instruction decoding
-Info (12250): Cpu: # 2022.01.04 20:37:03 (*)       Instruction fields
-Info (12250): Cpu: # 2022.01.04 20:37:04 (*)       Instruction decodes
-Info (12250): Cpu: # 2022.01.04 20:37:05 (*)       Signals for RTL simulation waveforms
-Info (12250): Cpu: # 2022.01.04 20:37:05 (*)       Instruction controls
-Info (12250): Cpu: # 2022.01.04 20:37:05 (*)     Pipeline frontend
-Info (12250): Cpu: # 2022.01.04 20:37:05 (*)     Pipeline backend
-Info (12250): Cpu: # 2022.01.04 20:37:10 (*)   Generating RTL from CPU objects
-Info (12250): Cpu: # 2022.01.04 20:37:13 (*)   Creating encrypted RTL
-Info (12250): Cpu: # 2022.01.04 20:37:14 (*) Done Nios II generation
+Info (12250): Cpu:   Generation command is [exec /root/intelFPGA_lite/18.1/quartus/linux64//eperlcmd -I /root/intelFPGA_lite/18.1/quartus/linux64//perl/lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /root/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I /root/intelFPGA_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- /root/intelFPGA_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=soc_system_nios2_gen2_0_cpu --dir=/tmp/alt8997_2809627154235578291.dir/0010_cpu_gen/ --quartus_bindir=/root/intelFPGA_lite/18.1/quartus/linux64/ --verilog --config=/tmp/alt8997_2809627154235578291.dir/0010_cpu_gen//soc_system_nios2_gen2_0_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info (12250): Cpu: # 2022.01.05 11:11:50 (*) Starting Nios II generation
+Info (12250): Cpu: # 2022.01.05 11:11:50 (*)   Checking for plaintext license.
+Info (12250): Cpu: # 2022.01.05 11:11:52 (*)   Couldn't query license setup in Quartus directory /root/intelFPGA_lite/18.1/quartus/linux64/
+Info (12250): Cpu: # 2022.01.05 11:11:52 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info (12250): Cpu: # 2022.01.05 11:11:52 (*)   LM_LICENSE_FILE environment variable is empty
+Info (12250): Cpu: # 2022.01.05 11:11:52 (*)   Plaintext license not found.
+Info (12250): Cpu: # 2022.01.05 11:11:52 (*)   Checking for encrypted license (non-evaluation).
+Info (12250): Cpu: # 2022.01.05 11:11:53 (*)   Couldn't query license setup in Quartus directory /root/intelFPGA_lite/18.1/quartus/linux64/
+Info (12250): Cpu: # 2022.01.05 11:11:53 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info (12250): Cpu: # 2022.01.05 11:11:53 (*)   LM_LICENSE_FILE environment variable is empty
+Info (12250): Cpu: # 2022.01.05 11:11:53 (*)   Encrypted license not found.  Defaulting to OCP evaluation license (produces a time-limited SOF)
+Info (12250): Cpu: # 2022.01.05 11:11:53 (*)   Elaborating CPU configuration settings
+Info (12250): Cpu: # 2022.01.05 11:11:53 (*)   Creating all objects for CPU
+Info (12250): Cpu: # 2022.01.05 11:11:53 (*)     Testbench
+Info (12250): Cpu: # 2022.01.05 11:11:53 (*)     Instruction decoding
+Info (12250): Cpu: # 2022.01.05 11:11:53 (*)       Instruction fields
+Info (12250): Cpu: # 2022.01.05 11:11:53 (*)       Instruction decodes
+Info (12250): Cpu: # 2022.01.05 11:11:54 (*)       Signals for RTL simulation waveforms
+Info (12250): Cpu: # 2022.01.05 11:11:54 (*)       Instruction controls
+Info (12250): Cpu: # 2022.01.05 11:11:54 (*)     Pipeline frontend
+Info (12250): Cpu: # 2022.01.05 11:11:55 (*)     Pipeline backend
+Info (12250): Cpu: # 2022.01.05 11:11:58 (*)   Generating RTL from CPU objects
+Info (12250): Cpu: # 2022.01.05 11:12:01 (*)   Creating encrypted RTL
+Info (12250): Cpu: # 2022.01.05 11:12:03 (*) Done Nios II generation
 Info (12250): Cpu: Done RTL generation for module 'soc_system_nios2_gen2_0_cpu'
 Info (12250): Cpu: "nios2_gen2_0" instantiated altera_nios2_gen2_unit "cpu"
 Info (12250): Lcd_0_avalon_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "lcd_0_avalon_master_translator"
@@ -8766,18 +8766,18 @@ Info (12021): Found 2 design units, including 1 entities, in source file /home/s
     Info (12022): Found design unit 1: fifo-SYN File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/fifo.vhd Line: 57
     Info (12023): Found entity 1: fifo File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/fifo.vhd Line: 42
 Info (12021): Found 2 design units, including 1 entities, in source file /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/top.vhd
-    Info (12022): Found design unit 1: TOP-A File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/top.vhd Line: 48
-    Info (12023): Found entity 1: TOP File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/top.vhd Line: 7
+    Info (12022): Found design unit 1: TOP-A File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/top.vhd Line: 35
+    Info (12023): Found entity 1: TOP File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/top.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/RegisterFile.vhd
     Info (12022): Found design unit 1: RegisterFile-register_file_arch File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/RegisterFile.vhd Line: 33
     Info (12023): Found entity 1: RegisterFile File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/RegisterFile.vhd Line: 6
 Info (12021): Found 1 design units, including 0 entities, in source file /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/reg_pkg.vhd
     Info (12022): Found design unit 1: register_file_pkg File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/reg_pkg.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/LCDController.vhd
-    Info (12022): Found design unit 1: LCDController-lcd_controller_arch File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/LCDController.vhd Line: 44
-    Info (12023): Found entity 1: LCDController File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/LCDController.vhd Line: 7
+    Info (12022): Found design unit 1: LCDController-lcd_controller_arch File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/LCDController.vhd Line: 42
+    Info (12023): Found entity 1: LCDController File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/LCDController.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/DMAController.vhd
-    Info (12022): Found design unit 1: DMAController-dma_control_arch File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/DMAController.vhd Line: 45
+    Info (12022): Found design unit 1: DMAController-dma_control_arch File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/DMAController.vhd Line: 43
     Info (12023): Found entity 1: DMAController File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/DMAController.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/DE0_Nano_SoC_TRDB_D5M_LT24_top_level.vhd
     Info (12022): Found design unit 1: DE0_Nano_SoC_TRDB_D5M_LT24_top_level-rtl File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/DE0_Nano_SoC_TRDB_D5M_LT24_top_level.vhd Line: 125
@@ -8785,11 +8785,11 @@ Info (12021): Found 2 design units, including 1 entities, in source file /home/s
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/soc_system.v
     Info (12023): Found entity 1: soc_system File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/soc_system.v Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file db/ip/soc_system/submodules/DMAController.vhd
-    Info (12022): Found design unit 1: DMAController-dma_control_arch File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/DMAController.vhd Line: 45
+    Info (12022): Found design unit 1: DMAController-dma_control_arch File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/DMAController.vhd Line: 43
     Info (12023): Found entity 1: DMAController File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/DMAController.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file db/ip/soc_system/submodules/LCDController.vhd
-    Info (12022): Found design unit 1: LCDController-lcd_controller_arch File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/LCDController.vhd Line: 44
-    Info (12023): Found entity 1: LCDController File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/LCDController.vhd Line: 7
+    Info (12022): Found design unit 1: LCDController-lcd_controller_arch File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/LCDController.vhd Line: 42
+    Info (12023): Found entity 1: LCDController File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/LCDController.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file db/ip/soc_system/submodules/RegisterFile.vhd
     Info (12022): Found design unit 1: RegisterFile-register_file_arch File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/RegisterFile.vhd Line: 33
     Info (12023): Found entity 1: RegisterFile File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/RegisterFile.vhd Line: 6
@@ -9016,8 +9016,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/ip/s
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/soc_system/submodules/soc_system_pio_leds.v
     Info (12023): Found entity 1: soc_system_pio_leds File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/soc_system_pio_leds.v Line: 21
 Info (12021): Found 2 design units, including 1 entities, in source file db/ip/soc_system/submodules/top.vhd
-    Info (12022): Found design unit 1: TOP-A File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/top.vhd Line: 48
-    Info (12023): Found entity 1: TOP File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/top.vhd Line: 7
+    Info (12022): Found design unit 1: TOP-A File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/top.vhd Line: 35
+    Info (12023): Found entity 1: TOP File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/top.vhd Line: 5
 Warning (10236): Verilog HDL Implicit Net warning at hps_sdram_pll.sv(168): created implicit net for "pll_dr_clk" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/hps_sdram_pll.sv Line: 168
 Info (12127): Elaborating entity "DE0_Nano_SoC_TRDB_D5M_LT24_top_level" for the top level hierarchy
 Info (12128): Elaborating entity "soc_system" for hierarchy "soc_system:u0" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/DE0_Nano_SoC_TRDB_D5M_LT24_top_level.vhd Line: 206
@@ -9121,8 +9121,8 @@ Info (12133): Instantiated megafunction "soc_system:u0|soc_system_jtag_uart_0:jt
 Info (12128): Elaborating entity "sld_jtag_endpoint_adapter" for hierarchy "soc_system:u0|soc_system_jtag_uart_0:jtag_uart_0|alt_jtag_atlantic:soc_system_jtag_uart_0_alt_jtag_atlantic|sld_jtag_endpoint_adapter:inst" File: /root/intelFPGA_lite/18.1/quartus/libraries/megafunctions/alt_jtag_atlantic.v Line: 276
 Info (12128): Elaborating entity "sld_jtag_endpoint_adapter_impl" for hierarchy "soc_system:u0|soc_system_jtag_uart_0:jtag_uart_0|alt_jtag_atlantic:soc_system_jtag_uart_0_alt_jtag_atlantic|sld_jtag_endpoint_adapter:inst|sld_jtag_endpoint_adapter_impl:sld_jtag_endpoint_adapter_impl_inst" File: /root/intelFPGA_lite/18.1/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd Line: 232
 Info (12128): Elaborating entity "TOP" for hierarchy "soc_system:u0|TOP:lcd_0" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/soc_system.v Line: 321
-Info (12128): Elaborating entity "RegisterFile" for hierarchy "soc_system:u0|TOP:lcd_0|RegisterFile:registerfile_instance" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/top.vhd Line: 174
-Info (12128): Elaborating entity "fifo" for hierarchy "soc_system:u0|TOP:lcd_0|fifo:fifo_instance" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/top.vhd Line: 196
+Info (12128): Elaborating entity "RegisterFile" for hierarchy "soc_system:u0|TOP:lcd_0|RegisterFile:registerfile_instance" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/top.vhd Line: 153
+Info (12128): Elaborating entity "fifo" for hierarchy "soc_system:u0|TOP:lcd_0|fifo:fifo_instance" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/top.vhd Line: 175
 Info (12128): Elaborating entity "scfifo" for hierarchy "soc_system:u0|TOP:lcd_0|fifo:fifo_instance|scfifo:scfifo_component" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/fifo.vhd Line: 96
 Info (12130): Elaborated megafunction instantiation "soc_system:u0|TOP:lcd_0|fifo:fifo_instance|scfifo:scfifo_component" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/fifo.vhd Line: 96
 Info (12133): Instantiated megafunction "soc_system:u0|TOP:lcd_0|fifo:fifo_instance|scfifo:scfifo_component" with the following parameter: File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/fifo.vhd Line: 96
@@ -9155,8 +9155,8 @@ Info (12128): Elaborating entity "altsyncram_2us1" for hierarchy "soc_system:u0|
 Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_mgb.tdf
     Info (12023): Found entity 1: cntr_mgb File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/cntr_mgb.tdf Line: 25
 Info (12128): Elaborating entity "cntr_mgb" for hierarchy "soc_system:u0|TOP:lcd_0|fifo:fifo_instance|scfifo:scfifo_component|scfifo_1bc1:auto_generated|a_dpfifo_gs91:dpfifo|cntr_mgb:rd_ptr_count" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/a_dpfifo_gs91.tdf Line: 43
-Info (12128): Elaborating entity "DMAController" for hierarchy "soc_system:u0|TOP:lcd_0|DMAController:dma_instance" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/top.vhd Line: 208
-Info (12128): Elaborating entity "LCDController" for hierarchy "soc_system:u0|TOP:lcd_0|LCDController:lcd_instance" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/top.vhd Line: 228
+Info (12128): Elaborating entity "DMAController" for hierarchy "soc_system:u0|TOP:lcd_0|DMAController:dma_instance" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/top.vhd Line: 187
+Info (12128): Elaborating entity "LCDController" for hierarchy "soc_system:u0|TOP:lcd_0|LCDController:lcd_instance" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/top.vhd Line: 206
 Info (10018): Can't recognize finite state machine "state" because it has a complex reset state
 Info (12128): Elaborating entity "soc_system_nios2_gen2_0" for hierarchy "soc_system:u0|soc_system_nios2_gen2_0:nios2_gen2_0" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/soc_system.v Line: 352
 Info (12128): Elaborating entity "soc_system_nios2_gen2_0_cpu" for hierarchy "soc_system:u0|soc_system_nios2_gen2_0:nios2_gen2_0|soc_system_nios2_gen2_0_cpu:cpu" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0.v Line: 69
@@ -9366,7 +9366,7 @@ Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "soc_
 Info (12128): Elaborating entity "altera_reset_controller" for hierarchy "soc_system:u0|altera_reset_controller:rst_controller_001" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/soc_system.v Line: 601
 Warning (12020): Port "jdo" on the entity instantiation of "the_soc_system_nios2_gen2_0_cpu_nios2_oci_itrace" is connected to a signal of width 38. The formal width of the signal in the module is 16.  The extra bits will be ignored. File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/soc_system_nios2_gen2_0_cpu.v Line: 3216
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2022.01.04.20:38:54 Progress: Loading sldb0ea1b78/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2022.01.05.11:13:47 Progress: Loading sldb0ea1b78/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -9434,8 +9434,8 @@ Warning (265069): Megafunction that supports Intel FPGA IP Evaluation Mode featu
 Info (265071): Evaluation period of megafunction that supports Intel FPGA IP Evaluation Mode feature can be extended indefinitely by using tethered operation
 Warning (12241): 34 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
-    Warning (13310): Register "soc_system:u0|TOP:lcd_0|LCDController:lcd_instance|state.Reset" is converted into an equivalent circuit using register "soc_system:u0|TOP:lcd_0|LCDController:lcd_instance|state.Reset~_emulated" and latch "soc_system:u0|TOP:lcd_0|LCDController:lcd_instance|state.Reset~1" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/LCDController.vhd Line: 55
-    Warning (13310): Register "soc_system:u0|TOP:lcd_0|LCDController:lcd_instance|state.Idle" is converted into an equivalent circuit using register "soc_system:u0|TOP:lcd_0|LCDController:lcd_instance|state.Idle~_emulated" and latch "soc_system:u0|TOP:lcd_0|LCDController:lcd_instance|state.Idle~1" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/LCDController.vhd Line: 55
+    Warning (13310): Register "soc_system:u0|TOP:lcd_0|LCDController:lcd_instance|state.Reset" is converted into an equivalent circuit using register "soc_system:u0|TOP:lcd_0|LCDController:lcd_instance|state.Reset~_emulated" and latch "soc_system:u0|TOP:lcd_0|LCDController:lcd_instance|state.Reset~1" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/LCDController.vhd Line: 49
+    Warning (13310): Register "soc_system:u0|TOP:lcd_0|LCDController:lcd_instance|state.Idle" is converted into an equivalent circuit using register "soc_system:u0|TOP:lcd_0|LCDController:lcd_instance|state.Idle~_emulated" and latch "soc_system:u0|TOP:lcd_0|LCDController:lcd_instance|state.Idle~1" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/quartus/db/ip/soc_system/submodules/LCDController.vhd Line: 49
 Warning (13009): TRI or OPNDRN buffers permanently enabled
     Warning (13010): Node "HPS_CONV_USB_N~synth" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/DE0_Nano_SoC_TRDB_D5M_LT24_top_level.vhd Line: 74
     Warning (13010): Node "HPS_DDR3_DQ[0]~synth" File: /home/sawii00/Documents/lab_4_project_template/lab_4_project_template/hw/hdl/DE0_Nano_SoC_TRDB_D5M_LT24_top_level.vhd Line: 83
@@ -9524,10 +9524,10 @@ Info (21057): Implemented 8415 device resources after synthesis - the final reso
     Info (21066): Implemented 1 delay-locked loops
     Info (21062): Implemented 3 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 114 warnings
-    Info: Peak virtual memory: 1424 megabytes
-    Info: Processing ended: Tue Jan  4 20:39:50 2022
-    Info: Elapsed time: 00:04:30
-    Info: Total CPU time (on all processors): 00:08:07
+    Info: Peak virtual memory: 1422 megabytes
+    Info: Processing ended: Wed Jan  5 11:14:44 2022
+    Info: Elapsed time: 00:04:49
+    Info: Total CPU time (on all processors): 00:08:49
 
 
 +------------------------------------------+

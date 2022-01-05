@@ -965,10 +965,10 @@ alt_after_alt_main:
 1010028c:	003fff06 	br	1010028c <alt_after_alt_main>
 
 10100290 <set_flag>:
-#define COMMAND_REG 10
-#define N_PARAMS 12
-#define PARAM(n) 14 + n * 2
 
+/*
+	Sets a specified flag within the Flags() register.
+*/
 void set_flag(uint16_t val)
 {
 10100290:	defffd04 	addi	sp,sp,-12
@@ -999,6 +999,9 @@ void set_flag(uint16_t val)
 
 101002e8 <reset_lcd>:
 
+/*
+	Sets the reset flag to initialize the reset procedure and waits for its completion
+*/
 void reset_lcd()
 {
 101002e8:	defffd04 	addi	sp,sp,-12
@@ -1045,7 +1048,10 @@ void reset_lcd()
 1010034c:	f800283a 	ret
 
 10100350 <send_command>:
-
+/*
+	Sends the command, number of parameters and parameters to the Register File.
+	Sets the send_command flag to instruct the controller to send the command and waits for its completion.
+*/
 void send_command(uint16_t cmd, uint16_t n, uint16_t* params)
 {
 10100350:	defffb04 	addi	sp,sp,-20
@@ -1149,6 +1155,9 @@ void send_command(uint16_t cmd, uint16_t n, uint16_t* params)
 
 10100448 <start_lcd>:
 
+/*
+	Sets the lcd_enable flag to start displaying the image and waits for the completion.
+*/
 void start_lcd()
 {
 10100448:	defffd04 	addi	sp,sp,-12
@@ -1196,6 +1205,9 @@ void start_lcd()
 
 101004b0 <init_lcd>:
 
+/*
+	Sends the initialization commands to setup the display correctly.
+*/
 void init_lcd()
 {
 101004b0:	deffd804 	addi	sp,sp,-160
@@ -1237,12 +1249,12 @@ void init_lcd()
 10100534:	01400104 	movi	r5,4
 10100538:	01003b44 	movi	r4,237
 1010053c:	01003500 	call	10100350 <send_command>
-	send_command(0xe8, 3, (uint16_t []){ 0x85, 0x01, 0x98});
+	send_command(0xe8, 3, (uint16_t []){ 0x85, 0x01, 0x0798});
 10100540:	00802144 	movi	r2,133
 10100544:	e0bffa0d 	sth	r2,-24(fp)
 10100548:	00800044 	movi	r2,1
 1010054c:	e0bffa8d 	sth	r2,-22(fp)
-10100550:	00802604 	movi	r2,152
+10100550:	0081e604 	movi	r2,1944
 10100554:	e0bffb0d 	sth	r2,-20(fp)
 10100558:	e0bffa04 	addi	r2,fp,-24
 1010055c:	100d883a 	mov	r6,r2
@@ -1417,10 +1429,10 @@ void init_lcd()
 101007bc:	01400044 	movi	r5,1
 101007c0:	01000e84 	movi	r4,58
 101007c4:	01003500 	call	10100350 <send_command>
-	send_command(0xf6, 3, (uint16_t []){ 0x01, 0x10, 0x0});
+	send_command(0xf6, 3, (uint16_t []){ 0x01, 0x30, 0x0});
 101007c8:	00800044 	movi	r2,1
 101007cc:	e0bfdb0d 	sth	r2,-148(fp)
-101007d0:	00800404 	movi	r2,16
+101007d0:	00800c04 	movi	r2,48
 101007d4:	e0bfdb8d 	sth	r2,-146(fp)
 101007d8:	e03fdc0d 	sth	zero,-144(fp)
 101007dc:	e0bfdb04 	addi	r2,fp,-148
@@ -1447,6 +1459,9 @@ void init_lcd()
 
 10100828 <configure_image>:
 
+/*
+	Sets the internal ImageAddress and ImageLength registers with the specified values.
+*/
 void configure_image(uint32_t image_address, uint32_t image_size)
 {
 10100828:	defffc04 	addi	sp,sp,-16
@@ -1489,6 +1504,9 @@ void configure_image(uint32_t image_address, uint32_t image_size)
 
 101008a4 <init_image>:
 
+/*
+	Populates memory with a default image to be displayed.
+*/
 void init_image(uint32_t image_address, uint32_t rows, uint32_t cols)
 {
 101008a4:	defff804 	addi	sp,sp,-32
@@ -1523,6 +1541,7 @@ void init_image(uint32_t image_address, uint32_t rows, uint32_t cols)
 101008f8:	00000106 	br	10100900 <init_image+0x5c>
 101008fc:	00be0004 	movi	r2,-2048
 10100900:	e0bffb0d 	sth	r2,-20(fp)
+
 		while(j < cols * sizeof(uint16_t))
 10100904:	00001b06 	br	10100974 <init_image+0xd0>
 		{
@@ -1559,11 +1578,11 @@ void init_image(uint32_t image_address, uint32_t rows, uint32_t cols)
 10100968:	e0bffc17 	ldw	r2,-16(fp)
 1010096c:	10800084 	addi	r2,r2,2
 10100970:	e0bffc15 	stw	r2,-16(fp)
-	while(i < rows * sizeof(uint16_t))
 	{
 		uint32_t j = 0;
 		if(i % 100 == 0)
 			color = color == 0xF800 ? 0x001F : 0xF800;
+
 		while(j < cols * sizeof(uint16_t))
 10100974:	e0bfff17 	ldw	r2,-4(fp)
 10100978:	1085883a 	add	r2,r2,r2
@@ -1638,9 +1657,9 @@ int main()
 10100a00:	01040474 	movhi	r4,4113
 10100a04:	213eb504 	addi	r4,r4,-1324
 10100a08:	0100e9c0 	call	10100e9c <puts>
-	init_image(image_address, 240, 320);
-10100a0c:	01805004 	movi	r6,320
-10100a10:	01403c04 	movi	r5,240
+	init_image(image_address, 320, 240);
+10100a0c:	01803c04 	movi	r6,240
+10100a10:	01405004 	movi	r5,320
 10100a14:	e13fff17 	ldw	r4,-4(fp)
 10100a18:	01008a40 	call	101008a4 <init_image>
 	printf("Image address and size set\n");
@@ -1662,7 +1681,7 @@ int main()
 10100a48:	0100e9c0 	call	10100e9c <puts>
 	start_lcd();
 10100a4c:	01004480 	call	10100448 <start_lcd>
-	printf("Display Idle\n");
+	printf("Display Stopped\n");
 10100a50:	01040474 	movhi	r4,4113
 10100a54:	213ed604 	addi	r4,r4,-1192
 10100a58:	0100e9c0 	call	10100e9c <puts>

@@ -1,17 +1,5 @@
 /*
- * "Hello World" example.
- *
- * This example prints 'Hello from Nios II' to the STDOUT stream. It runs on
- * the Nios II 'standard', 'full_featured', 'fast', and 'low_cost' example
- * designs. It runs with or without the MicroC/OS-II RTOS and requires a STDOUT
- * device in your system's hardware.
- * The memory footprint of this hosted application is ~69 kbytes by default
- * using the standard reference design.
- *
- * For a reduced footprint version of this template, and an explanation of how
- * to reduce the memory footprint for a given application, see the
- * "small_hello_world" template.
- *
+ * This example shows how to initialize and display an image from memory to the LT24 LCD
  */
 
 #include <inttypes.h>
@@ -20,6 +8,8 @@
 #include "stdio.h"
 #include "stdarg.h"
 
+
+// Register Map Offsets
 #define IMAGE_ADDRESS 0
 #define IMAGE_LENGTH 4
 #define FLAGS 8
@@ -27,12 +17,18 @@
 #define N_PARAMS 12
 #define PARAM(n) 14 + n * 2
 
+/*
+	Sets a specified flag within the Flags() register.
+*/
 void set_flag(uint16_t val)
 {
 	uint16_t flags = IORD_16DIRECT(LCD_0_BASE, FLAGS);
 	IOWR_16DIRECT(LCD_0_BASE, FLAGS, flags | val);
 }
 
+/*
+	Sets the reset flag to initialize the reset procedure and waits for its completion
+*/
 void reset_lcd()
 {
 	set_flag(0x4);
@@ -44,6 +40,10 @@ void reset_lcd()
 	}
 }
 
+/*
+	Sends the command, number of parameters and parameters to the Register File.
+	Sets the send_command flag to instruct the controller to send the command and waits for its completion.
+*/
 void send_command(uint16_t cmd, uint16_t n, uint16_t* params)
 {
 	uint16_t i = 0;
@@ -66,6 +66,9 @@ void send_command(uint16_t cmd, uint16_t n, uint16_t* params)
 	}
 }
 
+/*
+	Sets the lcd_enable flag to start displaying the image and waits for the completion.
+*/
 void start_lcd()
 {
 	set_flag(0x1);
@@ -77,12 +80,15 @@ void start_lcd()
 	}
 }
 
+/*
+	Sends the initialization commands to setup the display correctly.
+*/
 void init_lcd()
 {
 	send_command(0x11, 0, (uint16_t []){ 0x09, 0x0a});
 	send_command(0xcf, 3, (uint16_t []){ 0x0, 0x81, 0xc0});
 	send_command(0xed, 4, (uint16_t []){ 0x64, 0x03, 0x12, 0x81});
-	send_command(0xe8, 3, (uint16_t []){ 0x85, 0x01, 0x98});
+	send_command(0xe8, 3, (uint16_t []){ 0x85, 0x01, 0x0798});
 	send_command(0xcb, 5, (uint16_t []){ 0x39, 0x2c, 0x00, 0x34, 0x02});
 	send_command(0xf7, 1, (uint16_t []){ 0x20});
 	send_command(0xea, 2, (uint16_t []){ 0x00, 0x00});
@@ -100,10 +106,13 @@ void init_lcd()
 	send_command(0x2a, 4, (uint16_t []){ 0x0, 0x0, 0x0, 0xef});
 	send_command(0x2b, 4, (uint16_t []){ 0x0, 0x0, 0x01, 0x3f});
 	send_command(0x3a, 1, (uint16_t []){ 0x55}); //RGB
-	send_command(0xf6, 3, (uint16_t []){ 0x01, 0x10, 0x0});
+	send_command(0xf6, 3, (uint16_t []){ 0x01, 0x30, 0x0});
 	send_command(0x29, 0, (uint16_t []){ 0x09, 0x0a});
 }
 
+/*
+	Sets the internal ImageAddress and ImageLength registers with the specified values.
+*/
 void configure_image(uint32_t image_address, uint32_t image_size)
 {
 	IOWR_32DIRECT(LCD_0_BASE, IMAGE_ADDRESS, image_address);
@@ -113,6 +122,9 @@ void configure_image(uint32_t image_address, uint32_t image_size)
 
 }
 
+/*
+	Populates memory with a default image to be displayed.
+*/
 void init_image(uint32_t image_address, uint32_t rows, uint32_t cols)
 {
 	uint32_t i = 0;
@@ -123,6 +135,7 @@ void init_image(uint32_t image_address, uint32_t rows, uint32_t cols)
 		uint32_t j = 0;
 		if(i % 100 == 0)
 			color = color == 0xF800 ? 0x001F : 0xF800;
+
 		while(j < cols * sizeof(uint16_t))
 		{
 			IOWR_16DIRECT(image_address, i * cols + j, color);
@@ -151,14 +164,14 @@ int main()
 	uint32_t image_address = HPS_0_BRIDGES_BASE;
 
 	printf("Setting image address and size\n");
-	init_image(image_address, 240, 320);
+	init_image(image_address, 320, 240);
 	printf("Image address and size set\n");
 
 	printf("Configuring default image\n");
 	configure_image(image_address, image_size);
 	printf("Default image configured... starting LCD\n");
 	start_lcd();
-	printf("Display Idle\n");
+	printf("Display Stopped\n");
 
 	return 0;
 }

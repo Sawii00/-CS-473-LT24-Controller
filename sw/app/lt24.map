@@ -813,8 +813,7 @@ LOAD /root/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib
                 0x000000001010fa34                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
                 0x000000001010fa34                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x000000001010fa34      0x131 obj/default/hello_world.o
- *fill*         0x000000001010fb65        0x3 
+ .rodata        0x000000001010fa34      0x134 obj/default/hello_world.o
  .rodata.str1.4
                 0x000000001010fb68        0x2 /root/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
  *fill*         0x000000001010fb6a        0x2 

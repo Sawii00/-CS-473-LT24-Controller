@@ -58,6 +58,7 @@ BEGIN
 		-- Flags(2) is the asynchronous reset flag that can be set via software by the NIOS
 		IF Flags(2) = '1' AND state /= Reset THEN
 			state <= Reset;
+			--reset_counter <= x"00000000";
 		ELSIF nReset = '0' THEN
 			state            <= Idle;
 			reset_counter    <= x"00000000";

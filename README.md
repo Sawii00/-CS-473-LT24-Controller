@@ -7,6 +7,19 @@ The image can be read from a file to memory, or directly written there by an ext
 
 The final task was indeed to interface with another group to directly display the image captured by their camera on our display.
 
+## Top-Level Overview
 ![image](https://user-images.githubusercontent.com/23176335/178516121-5508a517-b671-4fda-9f84-097a6d2400fb.png)
 
 ![image](https://user-images.githubusercontent.com/23176335/178516198-64544445-530b-4e70-9c6d-187d1e204777.png)
+
+## Hardware Implementation
+
+We split the design across two main components: DMA, and LCD Controller. 
+The DMA has the task of fetching the image from memory and inserting the pixel values within a hardware FIFO used to interface with the LCD controller. 
+The LCD controller has to send commands to the ILI controller specified by the user, or pixel data. Since the components operate at different frequencies, we had to interpose a FIFO. 
+All the configuration can be provided by the user through the following register map. 
+
+![image](https://user-images.githubusercontent.com/23176335/178516793-e9b5bc3f-e97f-4485-87d2-40733ef774af.png)
+
+## More Information
+Report: https://drive.google.com/file/d/1zMULhoCsnjM_YXiwNWF954S0zQ_t0bnZ/view?usp=sharing
